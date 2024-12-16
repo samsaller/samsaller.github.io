@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 const init = () => {
     const canvas = document.getElementById("canvas");
@@ -15,10 +15,10 @@ const init = () => {
 
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
+    controls.update()
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
     renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(window.devicePixelRatio)
     renderer.render(scene, camera);
 
     console.log("Sucessful scene initializing")

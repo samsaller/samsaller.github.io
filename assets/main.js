@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import init from "./init.js";
-import stopLoading from "./loading.js";
+import loading from "./loading.js"
 
-
+let {loadingPercentage, stopLoading, loadingError} = loading();
+let stopLoadingAllowed = true
 const { scene, canvas, sizes, camera, renderer, controls } = init();
 
 const clock = new THREE.Clock();
@@ -20,11 +21,15 @@ manager.onStart = function (url, itemsLoaded, itemsTotal) {
             itemsTotal +
             " files."
     );
+    let percentage = Math.floor((itemsLoaded/itemsTotal)*100)
+    loadingPercentage.innerHTML = `${percentage}%`
 };
 
 manager.onLoad = function () {
     console.log("Loading complete!");
-    stopLoading();
+    setTimeout(() => {
+        stopLoading(stopLoadingAllowed);
+    }, 500);
 };
 
 manager.onProgress = function (url, itemsLoaded, itemsTotal) {
@@ -37,10 +42,17 @@ manager.onProgress = function (url, itemsLoaded, itemsTotal) {
             itemsTotal +
             " files."
     );
+    let percentage = Math.floor((itemsLoaded/itemsTotal)*100)
+    loadingPercentage.innerHTML = `${percentage}%`
+    loadingPercentage.innerHTML = `${percentage == 100 ? 99 : percentage}%`
 };
 
 manager.onError = function (url) {
-    console.log("There was an error loading " + url);
+    stopLoadingAllowed = false
+    console.error("There was an unexpected loading error");
+    console.error("There was an error loading " + url);
+    loadingError.innerHTML = "Loading Error, see console"
+    
 };
 //
 // ============Functions==============
@@ -82,6 +94,7 @@ for (let i = 0; i < 200; i++) {
 scene.add(stars);
 
 const cubeTextureLoader = new THREE.CubeTextureLoader(manager);
+const TextureLoader = new THREE.TextureLoader(manager);
 
 const spaceTexture = cubeTextureLoader.setPath("./src/imgs/space/").load(
     ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
@@ -92,10 +105,11 @@ const spaceTexture = cubeTextureLoader.setPath("./src/imgs/space/").load(
         console.log("Space loading");
     },
     (error) => {
-        console.log("Space loading error");
-        console.log(error);
+        console.error("Space loading error");
+        console.error(error);
     }
 );
+
 scene.background = spaceTexture;
 
 //

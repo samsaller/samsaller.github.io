@@ -65,6 +65,7 @@ function addSTar() {
     star.position.x = Math.random() * 100 - 50;
     star.position.y = Math.random() * 100 - 50;
     star.position.z = Math.random() * 100 - 50;
+    star.speed = Math.random() * 20
     stars.add(star);
 }
 //
@@ -75,15 +76,15 @@ function addSTar() {
 // ============Main code==============
 //
 camera.position.z = 30;
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
+const geometry = new THREE.OctahedronGeometry(10);
+const material = new THREE.MeshNormalMaterial();
 const mesh = new THREE.Mesh(geometry, material);
 
-const pointLight = new THREE.PointLight(0xffffff, 100);
-pointLight.position.set(3, 3, 3);
+// const pointLight = new THREE.PointLight(0xffffff, 100);
+// pointLight.position.set(3, 3, 3);
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
+// const ambientLight = new THREE.AmbientLight(0xffffff);
+// scene.add(pointLight, ambientLight);
 
 scene.add(mesh);
 
@@ -94,7 +95,6 @@ for (let i = 0; i < 200; i++) {
 scene.add(stars);
 
 const cubeTextureLoader = new THREE.CubeTextureLoader(manager);
-const TextureLoader = new THREE.TextureLoader(manager);
 
 const spaceTexture = cubeTextureLoader.setPath("./src/imgs/space/").load(
     ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
@@ -121,9 +121,19 @@ const tick = () => {
     elapsedTime = clock.getElapsedTime();
 
     //
-    mesh.rotation.x += delta;
-    mesh.rotation.y += delta / 2;
-    mesh.rotation.z += delta;
+    mesh.rotation.x += delta+delta-0.01;
+    mesh.rotation.y += delta+delta;
+    mesh.rotation.z += delta+delta-0.03;
+
+
+    stars.children.forEach((star, index)=>{
+        if(star.position.x >= 50){
+            star.position.x = -Math.random() * 100 - 50;
+            star.position.y = Math.random() * 100 - 50;
+            star.position.z = Math.random() * 100 - 50;
+        }
+        star.position.x += delta*star.speed
+    })
     //
 
     controls.update();

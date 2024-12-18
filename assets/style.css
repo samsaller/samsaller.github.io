@@ -1,27 +1,37 @@
+:root {
+    --main-color: #fe6903;
+    --gradient1-color: #0f0f0f;
+    --gradient2-color: #333333;
+    --gradient3-color: #c5c5c5;
+    --gradient4-color: #f0f0f0;
+    --alert-color: #ff0000;
+}
+
 @keyframes stopLoading {
     from {
         opacity: 1;
     }
-    to{
+    to {
         opacity: 0;
         display: none;
     }
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
+    color: var(--gradient4-color);
     font-family: monospace;
 }
-body{
+body {
     position: relative;
+    user-select: none;
 }
-canvas{
+canvas {
     display: block;
 }
-.loading{
+.loading {
     z-index: 1;
     width: 100vw;
     height: 100vh;
@@ -31,17 +41,36 @@ canvas{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000;
+    background: var(--gradient1-color);
     flex-direction: column;
     gap: 10px;
     font-size: 20px;
     cursor: default;
 }
-.loading.stop{
+.loading.stop {
     animation-name: stopLoading;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
-.loading-error{
-    color: red;
+.loading-error {
+    color: var(--alert-color);
+}
+.loading-percentage.red {
+    color: var(--alert-color);
+}
+.easter-egg {
+    position: absolute;
+    transition: 0.5s ease;
+}
+.easter-egg-next {
+    position: absolute;
+    z-index: -1;
+    scale: 0.9;
+}
+
+.versionby {
+    color: var(--gradient3-color);
+}
+.loading-text {
+    color: var(--main-color);
 }

@@ -5,17 +5,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <title>by Sam</title>
-        <link rel="stylesheet" crossorigin href="./assets/index-2sehOuCn.css">
-      <script type="module" crossorigin src="./assets/index-BaG1wK6U.js"></script>
+        <link rel="stylesheet" crossorigin href="./assets/index-l5EKbpX2.css">
+      <script type="module" crossorigin src="./assets/index-CmTqmTx4.js"></script>
     </head>
     <body>
         <div class="loading">
             <h1 class="loading-percentage">0%</h1>
-            <h1 class="loading-text"></h1>
-            <h1 class="versionby">v0.11 by Sam</h1>
-            <h2 class="loading-error"></h2>
+            <h2 class="versionby">v0.12 by Sam</h2>
+            <h2 class="loading-text"> </h2>
+            <div class="easter-egg">😎</div>
+            <div class="easter-egg-next">🫥</div>
+            <h3 class="loading-error"> </h3>
         </div>
         <canvas id="canvas" class="canvas"></canvas>
+        <script>
+            let timeoutid;
+            const changeEmojiPosition = (changeEmoji = true) => {
+                clearTimeout(timeoutid)
+                let top =
+                    Math.min(
+                        Math.round(Math.random() * window.innerHeight),
+                        window.innerHeight - easterEgg.offsetHeight
+                    ) + "px";
+                let left =
+                    Math.min(
+                        Math.round(Math.random() * window.innerWidth),
+                        window.innerWidth - easterEgg.offsetHeight
+                    ) + "px";
+                easterEgg.style.top = top;
+                easterEgg.style.left = left;
+                easterEggNext.style.top = top;
+                easterEggNext.style.left = left;
+                if (changeEmoji) {
+                    easterEgg.innerHTML = "😡";
+                    timeoutid = setTimeout(() => {
+                        easterEgg.innerHTML = "😎";
+                    }, 500);
+                }
+            };
+            let easterEgg = document.querySelector(".easter-egg");
+            let easterEggNext = document.querySelector(".easter-egg-next");
+            easterEgg.addEventListener("touchstart", (e) => {
+                changeEmojiPosition();
+            });
+            easterEgg.addEventListener("mouseover", (e) => {
+                changeEmojiPosition();
+            });
+            changeEmojiPosition(false);
+        </script>
 
         <!--      
             By SamSaller

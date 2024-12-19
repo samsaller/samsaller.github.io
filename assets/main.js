@@ -238,7 +238,7 @@ camera.add(audioListener);
 const audio = new THREE.Audio(audioListener);
 const ambient = new THREE.Audio(audioListener);
 
-audioLoader.load("./src/audios/neon.mp3", (data) => {
+audioLoader.load("./src/audios/neon_glitch.mp3", (data) => {
     audio.setBuffer(data);
     audio.stop()
     audio.setVolume(0.7);

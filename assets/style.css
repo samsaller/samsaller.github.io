@@ -27,15 +27,23 @@
 body {
     position: relative;
     user-select: none;
+    height: 1000vh;
 }
+body::-webkit-scrollbar {
+    display: none;
+  }
 canvas {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 .loading {
     z-index: 1;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -52,7 +60,10 @@ canvas {
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
-.loading-error {
+.loading-error{
+    cursor: pointer;
+}
+.loading-error.red {
     color: var(--alert-color);
 }
 .loading-percentage.red {
@@ -73,4 +84,20 @@ canvas {
 }
 .loading-text {
     color: var(--main-color);
+}
+
+button{
+    background-color: var(--main-color);
+    outline: none;
+    border: none;
+    padding: 10px 0px;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: .1s;
+}
+button:hover{
+    scale: 1.1;
+}
+button:active{
+    scale: 0.9;
 }

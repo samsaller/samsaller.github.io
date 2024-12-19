@@ -26,7 +26,6 @@ const loadingjs = () => {
     ];
     const railText = "-";
     loadingTextArray.push(railText.repeat(versionby.length));
-
     for (let j = 0; j < trainTexts.length; j++) {
         let result = "";
         let trainText = trainTexts[j];
@@ -75,10 +74,10 @@ const loadingjs = () => {
         }
     }
     const percentageSet = (newValue) => {
-        animateChange(loadingPercentageValue, newValue, 500, (value)=>{
-            loadingPercentageValue = value
+        animateChange(loadingPercentageValue, newValue, 500, (value) => {
+            loadingPercentageValue = value;
             loadingPercentage.innerHTML = loadingPercentageValue + "%";
-        })
+        });
     };
 
     const stopLoading = (stopLoadingAllowed) => {
@@ -90,8 +89,28 @@ const loadingjs = () => {
             }, 500);
         }
     };
+    const Ready = (stopLA, todo) => {
+        if (stopLA) {
+            setTimeout(() => {
+                loadingError.innerHTML = "Loaded! Tap me!";
+            }, 500);
+            loadingError.addEventListener("click", (e) => {
+                todo()
+                setTimeout(() => {
+                    stopLoading(stopLA);
+                }, 500);
+            });
+        }
+    };
     console.log("Loading initialized");
-    return { stopLoading, loadingPercentage, percentageSet, loadingError };
+
+    return {
+        stopLoading,
+        loadingPercentage,
+        percentageSet,
+        loadingError,
+        Ready,
+    };
 };
 
 export default loadingjs;

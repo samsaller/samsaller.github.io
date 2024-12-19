@@ -9,7 +9,7 @@
     <body>
         <div class="loading">
             <h1 class="loading-percentage">0%</h1>
-            <h2 class="versionby">v0.12 by Sam</h2>
+            <h2 class="versionby">v0.2 by Sam</h2>
             <h2 class="loading-text"> </h2>
             <div class="easter-egg">😎</div>
             <div class="easter-egg-next">🫥</div>
@@ -17,9 +17,12 @@
         </div>
         <canvas id="canvas" class="canvas"></canvas>
         <script>
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            };
             let timeoutid;
             const changeEmojiPosition = (changeEmoji = true) => {
-                clearTimeout(timeoutid)
+                clearTimeout(timeoutid);
                 let top =
                     Math.min(
                         Math.round(Math.random() * window.innerHeight),

@@ -1,0 +1,8 @@
+Model Information:
+* title:	Space Satellite
+* source:	https://sketchfab.com/3d-models/space-satellite-4e6485de34914ba4a493211f33616182
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

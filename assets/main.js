@@ -501,7 +501,7 @@ const textIntro3 = loadText("Josh");
 samGroup.scale.set(0.5, 0.5, 0.5);
 scene.add(samGroup);
 
-const spaceTexture = cubeTextureLoader.setPath("./src/imgs/space/").load(
+const spaceTexture = cubeTextureLoader.setPath("./src/imgs/skybox/").load(
     ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
     (event) => {
         console.log("Space loaded");

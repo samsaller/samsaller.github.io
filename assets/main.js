@@ -54,11 +54,19 @@ manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function () {
     console.log("Loading complete!");
-    Ready(stopLoadingAllowed, ()=>{
-        tick()
-        ambient.stop()
+    scene.traverse((obj) => {
+        obj.frustumCulled = false;
+    });
+    renderer.render(scene, camera);
+    scene.traverse((obj) => {
+        obj.frustumCulled = true;
+    });
+    renderer.render(scene, camera);
+    Ready(stopLoadingAllowed, () => {
+        tick();
+        ambient.stop();
         setTimeout(() => {
-            ambient.play()
+            ambient.play();
         }, 1000);
     });
 };
@@ -97,17 +105,12 @@ const MyHelper = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({ color: alertColor })
 );
-// scene.add(MyHelper)
-
 function myHelper(position) {
     MyHelper.position.set(position.x, position.y, position.z);
     console.log(MyHelper.position);
     scene.add(MyHelper);
 }
 
-//
-// ============Functions==============
-//
 function addSTar(distance = 50, group, color = gradient4Color) {
     const star = new THREE.Mesh(
         new THREE.SphereGeometry(0.1),
@@ -198,7 +201,6 @@ function moveStars(object) {
                 (Math.random() * (relativeDistance * 2) - relativeDistance);
         }
         star.position.x += delta * star.speed;
-        // camera.rotation.y += delta*0.01;
     });
 }
 
@@ -240,12 +242,12 @@ const ambient = new THREE.Audio(audioListener);
 
 audioLoader.load("./src/audios/neon_glitch.mp3", (data) => {
     audio.setBuffer(data);
-    audio.stop()
+    audio.stop();
     audio.setVolume(0.7);
 });
 audioLoader.load("./src/audios/ambient.mp3", (data) => {
     ambient.setBuffer(data);
-    ambient.stop()
+    ambient.stop();
     ambient.setVolume(0.3);
 });
 
@@ -277,17 +279,6 @@ function playGlitch(totalLength) {
     }, 1100);
     return Math.round(Math.random() * 9) * totalLength;
 }
-//
-// ===================================
-//
-
-//
-// ============Main code==============
-//
-
-// const pointLight = new THREE.PointLight(0xffffff, 100);
-// pointLight.position.set(3, 3, 3);
-// scene.add(pointLight);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
@@ -314,7 +305,7 @@ directionalLightDown.position.set(0, -20, 0);
 scene.add(directionalLightDown);
 
 const stars = new THREE.Group();
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 400; i++) {
     addSTar(100, stars);
 }
 
@@ -516,10 +507,6 @@ const spaceTexture = cubeTextureLoader.setPath("./src/imgs/skybox/").load(
 );
 scene.background = spaceTexture;
 
-//
-// ===================================
-//
-
 const hemiGeo = new THREE.SphereGeometry(
     10,
     32,
@@ -533,6 +520,7 @@ const hemiMat = new THREE.MeshBasicMaterial({
     color: 0x000000,
     wireframe: false,
 });
+
 const hemiLight = new THREE.Mesh(hemiGeo, hemiMat);
 hemiLight.rotation.y = Math.PI;
 scene.add(hemiLight);
@@ -555,16 +543,14 @@ const tick = () => {
     startGlitch();
 
     satellite.rotation.x = elapsedTime;
-    // satellite.rotation.y = elapsedTime
-    // satellite.rotation.z = elapsedTime
+    satellite.rotation.y = elapsedTime / 2;
+    satellite.rotation.z = elapsedTime / 1.2;
 
     // controls.update();
     // samGroup.lookAt(camera.position)
     renderer.render(scene, camera);
     window.requestAnimationFrame(tick);
 };
-
-console.log("Sucessful ticks starting");
 
 window.addEventListener("resize", (e) => {
     sizes.width = window.innerWidth;
@@ -586,17 +572,6 @@ window.addEventListener("resize", (e) => {
 
 // };
 
-// canvas.addEventListener("click", handleClick);
-
-//
-// Uncomment code below to enable double click full screen
-//
-
-// canvas.addEventListener("dblclick", (e) => {
-//     document.fullscreenElement
-//         ? document.exitFullscreen()
-//         : canvas.requestFullscreen();
-// });
 
 let glitchAllowAllowed = true;
 let camerastart = 100;

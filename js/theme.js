@@ -5,7 +5,7 @@ function changeTip(){
     return function changeTipText(){
         let tipText = document.getElementById("tipText")
         if(!tipCHanged){
-            tipText.innerText = "Yup... You got it! ;)"
+            tipText.innerText = "This website made by Sam"
             tipCHanged = !tipCHanged
         }
     }

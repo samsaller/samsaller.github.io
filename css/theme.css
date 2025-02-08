@@ -1,0 +1,14 @@
+:root {
+    --primary: #fe6903;
+    --gradient1-color: #0f0f0f;
+    --gradient2-color: #333333;
+    --gradient3-color: #c5c5c5;
+    --secondary-color: #f0f0f0;
+}
+.light-theme {
+    --primary: #fe6903;
+    --gradient1-color: #f0f0f0;
+    --gradient2-color: #c5c5c5;
+    --gradient3-color: #333333;
+    --secondary-color: #0f0f0f;
+}

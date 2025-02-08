@@ -12,13 +12,15 @@ function changeTip(){
 }
 
 let changeTipText = changeTip()
+var currentTheme = "dark"
 
 window.addEventListener("click", (e) => {
-    let currentTheme = themeLink.getAttribute("href")
-    if(currentTheme === "./css/theme-dark.css") {
-        themeLink.setAttribute("href", "./css/theme-light.css")
+    if(currentTheme === "dark") {
+        document.body.classList.add("light-theme")
+        currentTheme = "light"
     }else {
-        themeLink.setAttribute("href", "./css/theme-dark.css")
+        document.body.classList.remove("light-theme")
+        currentTheme = "dark"
     }
     changeTipText()
 })

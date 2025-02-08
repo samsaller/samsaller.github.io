@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Ubuntu;
+    transition: 0.2s;
+}
+
+body{
+    background-color: var(--gradient1-color);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 10px;
+    user-select: none;
+}
+
+.primary{
+    color: var(--primary);
+}
+.secondary{
+    color: var(--secondary-color);
+}
+.gradient3{
+    color: var(--gradient2-color);
+}

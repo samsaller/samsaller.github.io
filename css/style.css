@@ -5,7 +5,9 @@
     font-family: Ubuntu;
     transition: 0.2s;
 }
-
+html {
+    height: -webkit-fill-available;
+}
 body{
     background-color: var(--gradient1-color);
     text-align: center;
@@ -13,9 +15,11 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     gap: 10px;
     user-select: none;
+    position: relative;
 }
 
 .primary{
@@ -26,4 +30,14 @@ body{
 }
 .gradient3{
     color: var(--gradient2-color);
+}
+.logo{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 100px;
+    height: 100px;
+}
+.logo img{
+    width: 100%;
 }

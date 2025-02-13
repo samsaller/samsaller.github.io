@@ -5,24 +5,6 @@
     font-family: Ubuntu;
     transition: 0.2s;
 }
-<<<<<<< Updated upstream
-html {
-    height: -webkit-fill-available;
-}
-body{
-    background-color: var(--gradient1-color);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    gap: 10px;
-    user-select: none;
-    position: relative;
-=======
-
 ul {
     list-style: none;
 }
@@ -34,7 +16,6 @@ a {
     cursor: pointer;
     display: block;
     height: 100%;
->>>>>>> Stashed changes
 }
 
 button {
@@ -85,18 +66,6 @@ body {
 .gradient3 {
     color: var(--gradient2-color);
 }
-<<<<<<< Updated upstream
-.logo{
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    width: 100px;
-    height: 100px;
-}
-.logo img{
-    width: 100%;
-}
-=======
 .container {
     max-width: 1440px;
     padding: 0 10px;
@@ -285,4 +254,3 @@ footer .container {
         width: 250px;
     }
 }
->>>>>>> Stashed changes

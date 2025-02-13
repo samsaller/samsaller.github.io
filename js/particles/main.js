@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
             this.height = height;
             this.borders = 120;
             this.speed = 0.02;
-            this.particles = new Particles(this, this.width*this.height/10000);
+            this.particles = new Particles(this, this.width*this.height/8000);
             this.cursor = { x: -1000, y: -1000 };
         }
         update(deltaTime) {

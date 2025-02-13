@@ -1,10 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Ubuntu;
     transition: 0.2s;
 }
+<<<<<<< Updated upstream
 html {
     height: -webkit-fill-available;
 }
@@ -20,17 +21,71 @@ body{
     gap: 10px;
     user-select: none;
     position: relative;
+=======
+
+ul {
+    list-style: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+a {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+>>>>>>> Stashed changes
 }
 
-.primary{
+button {
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 5px 10px;
+    outline: none;
+    background: none;
+    color: var(--primary);
+    font-size: 20px;
+}
+
+button:hover {
+    background: var(--primary);
+    color: var(--gradient1-color);
+}
+
+button:active {
+    scale: 0.8;
+    transition: none;
+}
+
+body {
+    background-color: var(--gradient1-color);
+    user-select: none;
+    color: var(--secondary-color);
+    position: relative;
+    height: unset;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-left: 2px solid var(--gradient2-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.primary {
     color: var(--primary);
 }
-.secondary{
-    color: var(--secondary-color);
-}
-.gradient3{
+
+.gradient3 {
     color: var(--gradient2-color);
 }
+<<<<<<< Updated upstream
 .logo{
     position: absolute;
     left: 20px;
@@ -41,3 +96,193 @@ body{
 .logo img{
     width: 100%;
 }
+=======
+.container {
+    max-width: 1440px;
+    padding: 0 10px;
+    margin: auto;
+}
+nav {
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    border-bottom: 2px solid transparent;
+}
+
+nav.moved {
+    border-bottom: 2px solid var(--gradient2-color);
+    background: var(--gradient1-color);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-link {
+    height: 80px;
+    width: 80px;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: fit-content;
+}
+.nav-link {
+    width: 50px;
+}
+.initial {
+    font-size: 50px;
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
+    transition: none;
+}
+
+#theme-switcher {
+    width: 80px;
+}
+
+header {
+    height: 100svh;
+}
+.hero {
+    height: 100%;
+}
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--primary);
+    gap: 20px;
+}
+.hero h1 {
+    font-size: 50px;
+}
+.hero p {
+    font-size: 30px;
+    text-align: center;
+}
+.hero p span {
+    font-weight: bold;
+}
+
+section {
+    /* max-height: 100svh; */
+    padding: 20px 0;
+}
+
+section:nth-child(odd) {
+    background: var(--gradient1-color);
+    border-top: 2px solid var(--gradient2-color);
+    border-bottom: 2px solid var(--gradient2-color);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--gradient3-color);
+    padding-bottom: 20px;
+}
+
+.section-p {
+    text-align: center;
+    color: var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.section-photo img {
+    width: 500px;
+    display: block;
+    margin: auto;
+}
+
+.section-photo {
+    height: fit-content;
+}
+
+footer {
+    padding: 20px 0;
+    background: var(--primary);
+    color: var(--gradient1-color);
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+footer .container {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+
+/* .visited a {
+    width: 100px;
+}
+.visited a br {
+    display: none;
+} */
+.visited {
+    /* display: flex;
+    font-weight: normal;
+    gap: 10px;
+    justify-content: center; */
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.visited * { 
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .logo-link {
+        width: 50px;
+        height: 50px;
+    }
+    .initial {
+        font-size: 30px;
+    }
+    .nav-links {
+        gap: 10px;
+    }
+    .nav-link {
+        width: 30px;
+        height: 30px;
+    }
+    #theme-switcher {
+        font-size: 16px;
+        width: 60px;
+    }
+    .hero h1 {
+        font-size: 30px;
+    }
+    .hero p {
+        font-size: 18px;
+    }
+    .section-photo img {
+        width: 250px;
+    }
+}
+>>>>>>> Stashed changes

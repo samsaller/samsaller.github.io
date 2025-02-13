@@ -1,26 +1,32 @@
-const themeLink = document.getElementById("theme")
+const themeLink = document.getElementById("theme");
 
-function changeTip(){
-    let tipCHanged = false
-    return function changeTipText(){
-        let tipText = document.getElementById("tipText")
-        if(!tipCHanged){
-            tipText.innerText = "This website made by Sam"
-            tipCHanged = !tipCHanged
-        }
+var currentTheme = "";
+
+const themeChangedEvent = new CustomEvent("themeChange", {
+    detail: {
+        theme: currentTheme,
+    },
+});
+
+function changeTheme(dark) {
+    if (currentTheme === "dark" || dark === false) {
+        document.body.classList.add("light-theme");
+        document.getElementById("theme-switcher").innerHTML="Dark"
+        currentTheme = "light";
+        document.dispatchEvent(themeChangedEvent);
+    } else {
+        document.body.classList.remove("light-theme");
+        document.getElementById("theme-switcher").innerHTML="Light"
+        currentTheme = "dark";
+        document.dispatchEvent(themeChangedEvent);
     }
 }
 
-let changeTipText = changeTip()
-var currentTheme = "dark"
-
-window.addEventListener("click", (e) => {
-    if(currentTheme === "dark") {
-        document.body.classList.add("light-theme")
-        currentTheme = "light"
-    }else {
-        document.body.classList.remove("light-theme")
-        currentTheme = "dark"
-    }
-    changeTipText()
-})
+if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+    changeTheme(true);
+} else {
+    changeTheme(false);
+}

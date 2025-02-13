@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,112 @@
     <h1 class="primary">Hi!</h1>
     <h3 class="secondary">Portfolio under construction,<br>check back later! :)</h3>
     <p id="tipText" class="gradient3">Pss.. click anywhere... ;)</p>
+=======
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link id="theme" rel="stylesheet" href="./css/theme.css"/>
+        <link rel="stylesheet" href="./css/style.css" />
+        <title>Sam</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+>>>>>>> Stashed changes
 
-    <script src="js/theme.js"></script>
-</body>
+        <header id="header">
+            <nav id="nav">
+                <div class="container">
+                    <div class="logo">
+                        <a class="logo-link" href="/"
+                            ><img src="./imgs/favicon.png" alt=""
+                        /></a>
+                    </div>
+                    <h1 class="initial primary">Sam</h1>
+                    <div class="left-nav">
+                        <ul class="nav-links">
+                            <li class="nav-link">
+                                <a target="_blank" href="https://t.me/vonegy"
+                                    ><img src="./imgs/telegram.svg" alt=""
+                                /></a>
+                            </li>
+                            <button
+                                class="nav-link"
+                                id="theme-switcher"
+                                onclick="changeTheme()"
+                            ></button>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="hero">
+                <div class="container">
+                    <h1 data-aos="fade-up" data-aos-duration="2000">Hi!</h1>
+                    <p data-aos="fade-down" data-aos-delay="2000">
+                        My name is Alisher, but call me <span>Sam</span>.
+                    </p>
+                    <p data-aos="fade-down" data-aos-delay="2100">
+                        I created this website to share my works here.
+                    </p>
+                    <p data-aos="fade-down" data-aos-delay="2200">
+                        All the links are below ⬇
+                    </p>
+                    <h5 data-aos="fade-down" data-aos-offset="300">
+                        I hope you'll like what I do :)
+                    </h5>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="section-title">Projects</div>
+                <div class="section-subtitle">Links to my projects</div>
+                <div data-aos="fade-down" class="section-p">
+                    <p>Since i didn't post any projects here, you can look at this funny cat</p>
+                </div>
+                <div data-aos="fade-down" data-aos-delay="500" class="section-photo">
+                    <img src="./imgs/cat.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="section-title">Links</div>
+                <div class="section-subtitle">
+                    Links to my social media and contacts
+                </div>
+                <div data-aos="fade-down" class="section-p">
+                    <p>I am too lazy for this now, click on the telegram icon.</p>
+                </div>
+                <div data-aos="fade-down" data-aos-delay="500" class="section-photo">
+                    <img src="./imgs/cat.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <div class="visited">Total visited
+                    <script
+                        type="text/javascript"
+                        src="https://www.freevisitorcounters.com/en/home/counter/1300935/t/3"
+                    ></script> times
+                </div>
+                <div class="copyright">© by SamSaller</div>
+            </div>
+        </footer>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="./js/theme.js"></script>
+        <script src="./js/nav.js"></script>
+        <script type="module" src="js/particles/main.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
 </html>

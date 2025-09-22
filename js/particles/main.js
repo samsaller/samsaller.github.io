@@ -28,14 +28,12 @@ window.addEventListener("load", () => {
     const game = new Game(canvas.width, canvas.height);
 
     let lasttime = 0;
-    let update = true;
 
     function animate(timeStamp) {
         const deltaTime = timeStamp - lasttime;
         lasttime = timeStamp;
         game.update(deltaTime);
         game.draw(ctx);
-        // console.log(deltaTime);
         requestAnimationFrame(animate);
     }
 

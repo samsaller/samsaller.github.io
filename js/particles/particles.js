@@ -23,14 +23,15 @@ export class Particles {
                 "--gradient2-color"
             )
         );
+        this.speed = 10;
         for (let i = 0; i < this.quantity; i++) {
             this.particles.push({
                 x: Math.random() * this.game.width,
                 y: Math.random() * this.game.height,
                 radius: Math.random() * 5,
                 velocity: {
-                    x: Math.random() * 5 - 2.5,
-                    y: Math.random() * 5 - 2.5,
+                    x: Math.random() * this.speed - this.speed / 2,
+                    y: Math.random() * this.speed - this.speed / 2,
                 },
             });
         }
@@ -44,6 +45,20 @@ export class Particles {
                 )
             );
         });
+    }
+
+    addParticles(amount, x, y){
+        for(let i=0; i<amount; i++){
+            this.particles.push({
+                x: x,
+                y: y,
+                radius: Math.random() * 5,
+                velocity: {
+                    x: Math.random() * this.speed - this.speed / 2,
+                    y: Math.random() * this.speed - this.speed / 2,
+                },
+            })
+        }
     }
 
     update(deltaTime) {

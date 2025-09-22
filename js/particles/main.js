@@ -64,5 +64,11 @@ window.addEventListener("load", () => {
         game.cursor.y = -1000;
     });
 
+    window.addEventListener("click", e=>{
+        let x = e.x;
+        let y = e.y;
+        game.particles.addParticles(10, x, y)
+    })
+
     animate(0);
 });

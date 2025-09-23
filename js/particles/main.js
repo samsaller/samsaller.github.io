@@ -22,10 +22,13 @@ window.addEventListener("load", () => {
         }
         draw(context) {
             context.clearRect(0, 0, this.width, this.height);
-            context.beginPath();
-            context.arc(this.cursor.x, this.cursor.y, this.affectedRaduis, 0, 2 * Math.PI);
-            context.strokeStyle = "#fff";
-            context.stroke();
+
+            // CIRCLE
+            // context.beginPath();
+            // context.arc(this.cursor.x, this.cursor.y, this.affectedRaduis, 0, 2 * Math.PI);
+            // context.strokeStyle = "#fff";
+            // context.stroke();
+
             this.particles.draw(context);
         }
     }

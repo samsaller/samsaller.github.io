@@ -18,11 +18,7 @@ export class Particles {
         this.game = game;
         this.quantity = quantity;
         this.connectRadius = this.game.borders;
-        this.color = hexToRgbA(
-            getComputedStyle(document.body).getPropertyValue(
-                "--gradient2-color"
-            )
-        );
+        this.color = hexToRgbA(getComputedStyle(document.body).getPropertyValue("--gradient2-color"));
         this.speed = 10;
         for (let i = 0; i < this.quantity; i++) {
             this.particles.push({
@@ -36,19 +32,15 @@ export class Particles {
             });
         }
 
-        console.log(Math.floor(quantity)+ " particles created");
+        console.log(Math.floor(quantity) + " particles created");
 
         document.addEventListener("themeChange", (e) => {
-            this.color = hexToRgbA(
-                getComputedStyle(document.body).getPropertyValue(
-                    "--gradient2-color"
-                )
-            );
+            this.color = hexToRgbA(getComputedStyle(document.body).getPropertyValue("--gradient2-color"));
         });
     }
 
-    addParticles(amount, x, y){
-        for(let i=0; i<amount; i++){
+    addParticles(amount, x, y) {
+        for (let i = 0; i < amount; i++) {
             this.particles.push({
                 x: x,
                 y: y,
@@ -57,8 +49,17 @@ export class Particles {
                     x: Math.random() * this.speed - this.speed / 2,
                     y: Math.random() * this.speed - this.speed / 2,
                 },
-            })
+            });
         }
+    }
+
+    deleteParticles(raduis, x, y) {
+        this.particles.forEach((particle, index) => {
+            const distance = Math.sqrt((particle.x - x) ** 2 + (particle.y - y) ** 2);
+            if (distance <= raduis) {
+                this.particles.splice(index, 1);
+            }
+        });
     }
 
     update(deltaTime) {
@@ -96,64 +97,43 @@ export class Particles {
             this.particles.forEach((particle2) => {
                 if (particle === particle2) return;
 
-                const distance = Math.sqrt(
-                    (particle.x - particle2.x) ** 2 +
-                        (particle.y - particle2.y) ** 2
-                );
+                const distance = Math.sqrt((particle.x - particle2.x) ** 2 + (particle.y - particle2.y) ** 2);
                 if (distance <= this.connectRadius) {
-                    const smoothRadius =
-                        this.connectRadius - this.connectRadius / 10;
+                    const smoothRadius = this.connectRadius - this.connectRadius / 10;
                     const alpha =
                         distance <= smoothRadius
                             ? 1
-                            : 1 -
-                              (distance - smoothRadius) /
-                                  (this.connectRadius - smoothRadius);
+                            : 1 - (distance - smoothRadius) / (this.connectRadius - smoothRadius);
                     context.beginPath();
                     context.moveTo(particle.x, particle.y);
                     context.lineTo(
                         particle.x + (particle2.x - particle.x) / 2,
                         particle.y + (particle2.y - particle.y) / 2
                     );
-                    context.strokeStyle = `rgba(${this.color}, ${this.color}, ${
-                        this.color
-                    }, ${alpha / 2})`;
+                    context.strokeStyle = `rgba(${this.color}, ${this.color}, ${this.color}, ${alpha / 2})`;
                     context.stroke();
                 }
             });
 
             const cdistance = Math.sqrt(
-                (particle.x - this.game.cursor.x) ** 2 +
-                    (particle.y - this.game.cursor.y) ** 2
+                (particle.x - this.game.cursor.x) ** 2 + (particle.y - this.game.cursor.y) ** 2
             );
 
             if (cdistance <= this.connectRadius * 2) {
-                const csmoothRadius =
-                    this.connectRadius * 2 - this.connectRadius * 2 / 10;
+                const csmoothRadius = this.connectRadius * 2 - (this.connectRadius * 2) / 10;
                 const calpha =
                     cdistance <= csmoothRadius
                         ? 1
-                        : 1 -
-                          (cdistance - csmoothRadius) /
-                              (this.connectRadius * 2 - csmoothRadius);
+                        : 1 - (cdistance - csmoothRadius) / (this.connectRadius * 2 - csmoothRadius);
                 context.beginPath();
                 context.moveTo(particle.x, particle.y);
                 context.lineTo(this.game.cursor.x, this.game.cursor.y);
-                context.strokeStyle = `rgba(${this.color}, ${this.color}, ${
-                    this.color
-                }, ${calpha / 2})`;
+                context.strokeStyle = `rgba(${this.color}, ${this.color}, ${this.color}, ${calpha / 2})`;
                 context.stroke();
             }
 
             context.beginPath();
-            context.arc(
-                particle.x,
-                particle.y,
-                particle.radius,
-                0,
-                Math.PI * 2,
-                false
-            );
+            context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
             context.fillStyle = `rgb(${this.color}, ${this.color}, ${this.color})`;
             context.fill();
         });

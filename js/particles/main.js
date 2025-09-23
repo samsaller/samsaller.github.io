@@ -13,14 +13,19 @@ window.addEventListener("load", () => {
             this.height = height;
             this.borders = 120;
             this.speed = 0.02;
-            this.particles = new Particles(this, this.width*this.height/8000);
+            this.particles = new Particles(this, (this.width * this.height) / 8000);
             this.cursor = { x: -1000, y: -1000 };
+            this.affectedRaduis = this.particles.connectRadius;
         }
         update(deltaTime) {
             this.particles.update(deltaTime);
         }
         draw(context) {
             context.clearRect(0, 0, this.width, this.height);
+            context.beginPath();
+            context.arc(this.cursor.x, this.cursor.y, this.affectedRaduis, 0, 2 * Math.PI);
+            context.strokeStyle = "#fff";
+            context.stroke();
             this.particles.draw(context);
         }
     }
@@ -64,11 +69,17 @@ window.addEventListener("load", () => {
         game.cursor.y = -1000;
     });
 
-    window.addEventListener("click", e=>{
+    window.addEventListener("click", (e) => {
         let x = e.x;
         let y = e.y;
-        game.particles.addParticles(10, x, y)
-    })
+        game.particles.addParticles(10, x, y);
+    });
+    window.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        let x = e.x;
+        let y = e.y;
+        game.particles.deleteParticles(game.affectedRaduis, x, y);
+    });
 
     animate(0);
 });

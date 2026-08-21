@@ -224,6 +224,13 @@ footer .container {
     width: 0 !important;
     height: 0 !important;
 }
+.project-link{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
 
 @media only screen and (max-width: 768px) {
     .logo-link {
